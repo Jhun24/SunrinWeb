@@ -1,0 +1,105 @@
+*{
+  margin:0px;
+
+  font-family: 'Ubuntu', sans-serif;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+body,html{
+  width:100vw;
+  height:100vh;
+}
+
+.login{
+  width:100vw;
+  height:90vh;
+  background-color:rgb(216, 109, 84);
+}
+
+.main{
+  width:100vw;
+  height:90vh;
+  background-color:rgb(106,190,150);
+}
+
+.register{
+  width:100vw;
+  height:90vh;
+  background-color:rgb(241,162,79);
+}
+
+.header1{
+  width:100vw;
+  height:10vh;
+
+  background-color:rgb(106,190,150);
+}
+
+.header2{
+  width:100vw;
+  height:10vh;
+
+  background-color:rgb(102, 168, 207);
+}
+
+.header3{
+  width:100vw;
+  height:10vh;
+
+  background-color:rgb(241,162,79);
+}
+
+.header4{
+  width:100vw;
+  height:10vh;
+
+  background-color:rgb(216, 109, 84);
+}
+
+.headerBox{
+  height:10vh;
+  width:40vw;
+  float:right;
+}
+
+.contentBox{
+  display:flex;
+  width:40vw;
+  height:10vh;
+
+  justify-content:space-between;
+}
+
+.content{
+  width:10vw;
+  height:10vh;
+  display:flex;
+  align-items:center;
+
+  justify-content:center;
+
+  cursor:pointer;
+
+  color:white;
+  font-size:20px;
+  font-weight:900;
+}
+
+.content:hover{
+  background-color:rgba(255,255,255,0.2);
+}
+
+.intro{
+  width:100vw;
+  height:90vh;
+
+  background-color:rgb(102, 168, 207);
+}
+
+.section{
+  width:100vw;
+  height:90vh;
+}
