@@ -87,25 +87,9 @@ app.post('/loginCheck',function(req, res){
 
 
 //connect
-app.get('/404',function(req, res){
-  res.render('error.html')
-});
 
 app.get('/',function(req, res){
-
     res.render('index.html');
-});
-
-app.get('/edit',function(req, res){
-  res.render('write.html');
-});
-
-app.get('/visitor',function(req, res){
-  res.render('visitor.html');
-});
-
-app.get('/setting', function(req, res){
-  res.render('setting.html');
 });
 //connect finish
 
