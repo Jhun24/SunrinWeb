@@ -1,0 +1,246 @@
+*{
+  margin:0px;
+  font-family: 'Ubuntu', sans-serif;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+body{
+  width:100vw;
+  height:100vh;
+  background-color:#d2d5e0;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  overflow:hidden;
+}
+
+.calender{
+  width:55vw;
+  height:90vh;
+
+  background-color:#fff;
+  box-shadow:0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.list{
+  width:40vw;
+  height:90vh;
+
+  background-color:#fff;
+  box-shadow:0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.calenderHeader{
+
+  height:10vh;
+  border-bottom:0.01vw solid rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  padding-left:1vw;
+}
+
+.calenderContent{
+  width:50vw;
+  height:80vh;
+  margin:auto;
+  display:flex;
+}
+.dateName{
+  display:flex;
+  justify-content:space-between;
+  width:50vw;
+  height:10vh;
+}
+
+.calSideBarBack{
+  width:1vw;
+  height:70vh;
+  cursor:pointer;
+}
+
+.calSideBarBack:hover{
+  background-color:#FF6F00;
+}
+
+.calSideBarNext:hover{
+  background-color:#FF6F00;
+}
+
+.calSideBarNext{
+  width:1vw;
+  height:70vh;
+  cursor:pointer;
+}
+
+.box{
+  display:flex;
+}
+
+
+.date{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:6vw;
+  font-size:4vh;
+  height:10vh;
+  color:rgb(102,168,207);
+}
+
+h1{
+  font-size:6vh;
+  color: #4c5373;
+}
+
+.dateLine{
+  margin-top:3vh;
+  display:flex;
+  justify-content:space-between;
+  width:50vw;
+  height:8vh;
+}
+
+.num{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:6vw;
+  font-size:3.5vh;
+  height:8vh;
+  color:#4c5373;
+  border:0.1vh solid #e8eaf0;
+  cursor:pointer;
+}
+
+.num:hover{
+  background-color:#FF6F00;
+  color:white;
+}
+
+.numNone{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:6vw;
+  font-size:3.5vh;
+  height:8vh;
+  color:#4c5373;
+  border:0.1vh solid rgba(76,83,115,0.4);
+  opacity:0;
+}
+
+.listHeader{
+  height:10vh;
+  color:#4c5373;
+  padding-left:1vw;
+  display:flex;
+  align-items:center;
+  border-bottom:0.01vw solid rgba(0,0,0,0.2);
+}
+
+.listContent{
+  width:40vw;
+  height:70vh;
+  overflow-y:auto;
+}
+
+.listBox{
+  padding-top:1vh;
+  width:40vw;
+  height:80vh;
+  display:flex;
+
+}
+
+.listTime{
+  width:9vw;
+  height:7vh;
+  border-right:0.5vh solid #fff;
+  background-color:#e8eaf0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:1vw;
+  color:gray;
+  font-size:4vh;
+}
+
+.listName{
+  width:28vw;
+  height:7vh;
+  margin-right:1vw;
+  background-color:#e8eaf0;
+  padding-left:1vw;
+  color:gray;
+  font-size:4vh;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+.listFooter{
+  width:40vw;
+  height:10vh;
+  border-top:0.01vw solid rgba(0,0,0,0.2);
+}
+
+.addContent{
+  width:25vw;
+  height:7vh;
+  font-size:3vh;
+  padding-left:1vw;
+  border:0.01vw solid rgba(0,0,0,0.2);
+  outline:none;
+  color:gray;
+}
+
+.addTime{
+  width:10vw;
+  height:7vh;
+  font-size:3vh;
+  padding-left:1vw;
+  border:0.01vw solid rgba(0,0,0,0.2);
+  outline:none;
+  color:gray;
+}
+
+.listSubmit{
+  outline:none;
+  width:4vw;
+  height:7vh;
+  border:0.01vw solid rgba(0,0,0,0.1);
+  font-size:2.3vh;
+  color:#fff;
+}
+
+.listForm{
+  width:40vw;
+  height:10vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.calSelect{
+  background-color:#FF6F00;
+  color:white;
+}
+
+.back{
+
+  margin-left:3vw;
+  font-size:10vh;
+}
+.next{
+  margin-left:3vw;
+  font-size:10vh;
+}
+
+.listData{
+  width:40vw;
+  height:7vh;
+  display:flex;
+}

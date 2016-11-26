@@ -35,6 +35,9 @@ body,html{
 .register{
   width:100vw;
   height:90vh;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
 
 }
 
@@ -98,7 +101,9 @@ body,html{
 .intro{
   width:100vw;
   height:90vh;
-
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
 }
 
@@ -132,7 +137,7 @@ body,html{
   color:white;
   margin:auto;
   margin-top:2vh;
-  font-size:2.5vh;
+  font-size:3vh;
 
 }
 
@@ -143,7 +148,7 @@ body,html{
 }
 
 .loginForm{
-  width:15vw;
+  width:18vw;
   height:30vh;
 
   display:inline-block;
@@ -151,8 +156,8 @@ body,html{
 
 .loginInput{
   margin-top:3vh;
-  width:15vw;
-  height:4vh;
+  width:18vw;
+  height:7vh;
   border:0.3vh solid white;
   background-color:rgba(255,255,255,0);
   padding-left:1vw;
@@ -160,10 +165,11 @@ body,html{
   font-size:2vh;
   color:white;
 }
+
 .submit{
   margin-top:3vh;
-  width:15vw;
-  height:4vh;
+  width:18vw;
+  height:7vh;
   outline:none;
   border:0.3vh solid white;
   font-size:2vh;
@@ -193,4 +199,20 @@ h1{
   color:white;
   font-size:6vh;
   text-align:center;
+}
+
+
+.introTryst{
+  padding-bottom:3vh;
+}
+
+.tryst{
+  padding-top:2vh;
+  color:#0E4B54;
+  font-size:8vh;
+}
+
+.mainTryst{
+  color:#0E4B54;
+  font-size:10vh;
 }
