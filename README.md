@@ -7,32 +7,9 @@
 # Font
 ## 기본 폰트 : Ubuntu(Google Font)
 
-## login    : SourceSansPro(Google Font)
+# Node Module
+## mongoose
+## express
 
-# Image
-## search.png : 32 * 32 (px)
-## set.png    : 32 * 32 (px)
-## menu.png   : 32 * 32 (px)
-## edit.png   : 32 * 32 (px)
-## visit.png  : 32 * 32 (px)
-## main.png   : 32 * 32 (px)
-
-## user.png   : 64 * 64 (px)
-
-## headerBackground.png : 1920 * 1080 (px)
-
-# Include Css
-
-## index.html : header.css , index.css , menu.css
-## 404.html   : 404.css
-## login.html : login.css
-## write.html : write.css , header.css
-
-# Include JavaScript
-
-## index.html : index.js
-## write.html : write.js , index.js
-
-# ETC
-
-## test folder : custom prompt 제작 테스트용
+# etc
+## 각 파일명과 동일한 css,js 파일 소
