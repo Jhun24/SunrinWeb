@@ -14,97 +14,35 @@
   <body>
 
     <div class="fullContent">
+
       <section class="section">
-        <!-- <div class="header1">
-          <div class="headerBox">
-            <div class="contentBox">
-              <div id="main" class="content">Main</div>
-              <div id="login" class="content">Login</div>
-              <div id="content" class="content">Register</div>
-              <div id="intro" class="content">Intro</div>
-            </div>
-          </div>
-        </div> -->
+        <div class="opacityMask">
+          <div class="register">
+            <form class="loginForm" action="http://localhost:3000/register" method="post">
+              <h1>Register</h1>
+              <input type="text" name="name" class="loginInput" placeholder="Your Name">
+              <input type="text" style="ime-mode:disabled" name="id" class="loginInput" placeholder="Your Id">
+              <input type="password" style="ime-mode:disabled" name="ps" class="loginInput" placeholder="Your Password">
 
-        <div class="main">
-          <div class="mainBox">
-            <div class="mainHeader">
-              WelCome <e class="mainTryst">Tryst</e>!
-            </div>
+              <input type="submit" class="submit" value="Sign Up">
 
-            <div class="readMore">
-              Login
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="section2">
-        <!-- <div class="header2">
-          <div class="headerBox">
-            <div class="contentBox">
-              <div id="main" class="content">Main</div>
-              <div id="login" class="content">Login</div>
-              <div id="content" class="content">Register</div>
-              <div id="intro" class="content">Intro</div>
-            </div>
-          </div>
-        </div> -->
-        <div class="intro">
-          <div class="introContent">
-            <h1 class="introTryst">Get started with <p class="tryst">TRYST!</p></h1>
-            <h1>fast, accurate, easy scheduling service</h1>
+            </form>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <!-- <div class="header3">
-          <div class="headerBox">
-            <div class="contentBox">
-              <div id="main" class="content">Main</div>
-              <div id="login" class="content">Login</div>
-              <div id="content" class="content">Register</div>
-              <div id="intro" class="content">Intro</div>
+        <div class="opacityMask">
+          <div class="login">
+              <form class="loginForm" action="http://localhost:3000/login" method="post">
+                <h1>Login</h1>
+                <input type="text" name="id" class="loginInput" placeholder="Your Id">
+                <input type="password" name="ps" class="loginInput" placeholder="Your Password">
+
+                <input type="submit" class="submit" value="Log In">
+              </form>
             </div>
           </div>
-        </div> -->
-        <div class="register">
-          <form class="loginForm" action="http://localhost:3000/register" method="post">
-            <h1>Register</h1>
-            <input type="text" name="name" class="loginInput" placeholder="Your Name">
-            <input type="text" style="ime-mode:disabled" name="id" class="loginInput" placeholder="Your Id">
-            <input type="password" style="ime-mode:disabled" name="ps" class="loginInput" placeholder="Your Password">
-
-            <input type="submit" class="submit" value="Sign Up">
-
-          </form>
-        </div>
-      </section>
-
-      <section class="section" id="section2">
-        <!-- <div class="header4">
-          <div class="headerBox">
-            <div class="contentBox">
-              <div id="main" class="content">Main</div>
-              <div id="login" class="content">Login</div>
-              <div id="content" class="content">Register</div>
-              <div id="intro" class="content">Intro</div>
-            </div>
-          </div>
-        </div> -->
-        <div class="login">
-
-          <form class="loginForm" action="http://localhost:3000/login" method="post">
-            <h1>LOGIN</h1>
-            <input type="text" name="id" class="loginInput" placeholder="Your Id">
-            <input type="password" name="ps" class="loginInput" placeholder="Your Password">
-
-            <input type="submit" class="submit" value="Log In">
-
-          </form>
-
-        </div>
       </section>
     </div>
 

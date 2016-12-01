@@ -18,7 +18,7 @@ body{
 }
 
 .calender{
-  width:55vw;
+  width:30vw;
   height:90vh;
 
   background-color:#fff;
@@ -26,7 +26,7 @@ body{
 }
 
 .list{
-  width:40vw;
+  width:65vw;
   height:90vh;
 
   background-color:#fff;
@@ -43,22 +43,30 @@ body{
 }
 
 .calenderContent{
-  width:50vw;
+  width:30vw;
   height:80vh;
   margin:auto;
-  display:flex;
+  display:inline-block;
 }
+
+.dateBox{
+  width:30vw;
+  height:50vh;
+}
+
 .dateName{
   display:flex;
   justify-content:space-between;
-  width:50vw;
-  height:10vh;
+  width:30vw;
+  height:6vh;
 }
 
 .calSideBarBack{
-  width:1vw;
-  height:70vh;
+  width:15vw;
+  height:30vh;
   cursor:pointer;
+  font-size:6vh;
+  color: #4c5373;
 }
 
 .calSideBarBack:hover{
@@ -70,8 +78,10 @@ body{
 }
 
 .calSideBarNext{
-  width:1vw;
-  height:70vh;
+  width:15vw;
+  height:30vh;
+  font-size:6vh;
+  color: #4c5373;
   cursor:pointer;
 }
 
@@ -84,7 +94,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:6vw;
+  width:4vw;
   font-size:4vh;
   height:10vh;
   color:rgb(102,168,207);
@@ -99,20 +109,38 @@ h1{
   margin-top:3vh;
   display:flex;
   justify-content:space-between;
-  width:50vw;
-  height:8vh;
+  width:30vw;
+  height:4vh;
 }
 
 .num{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:6vw;
+  width:4vw;
   font-size:3.5vh;
-  height:8vh;
+  height:4vh;
   color:#4c5373;
   border:0.1vh solid #e8eaf0;
   cursor:pointer;
+}
+
+.monthBox{
+  width:30vw;
+  height:30vh;
+  border-top:0.01vw solid rgba(0,0,0,0.2);
+  display:flex;
+}
+
+.monthList{
+  width:28vw;
+  height:30vh;
+  border-left:0.01vw solid rgba(0,0,0,0.2);
+  border-right:0.01vw solid rgba(0,0,0,0.2);
+  overflow-y:auto;
+  display:flex;
+  align-items:flex-start;;
+  justify-content:center;
 }
 
 .num:hover{
@@ -124,9 +152,9 @@ h1{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:6vw;
+  width:4vw;
   font-size:3.5vh;
-  height:8vh;
+  height:4vh;
   color:#4c5373;
   border:0.1vh solid rgba(76,83,115,0.4);
   opacity:0;
@@ -142,9 +170,11 @@ h1{
 }
 
 .listContent{
-  width:40vw;
+  width:65vw;
   height:70vh;
   overflow-y:auto;
+  display:inline-block;
+
 }
 
 .listBox{
@@ -181,14 +211,25 @@ h1{
   justify-content:flex-start;
 }
 
+.md{
+  width:10vw;
+  height:7vh;
+  color:gray;
+  outline:none;
+  font-size:3vh;
+}
+
 .listFooter{
-  width:40vw;
+  width:65vw;
   height:10vh;
   border-top:0.01vw solid rgba(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
 }
 
 .addContent{
-  width:25vw;
+  width:35vw;
   height:7vh;
   font-size:3vh;
   padding-left:1vw;
@@ -198,7 +239,7 @@ h1{
 }
 
 .addTime{
-  width:10vw;
+  width:12vw;
   height:7vh;
   font-size:3vh;
   padding-left:1vw;
@@ -214,6 +255,7 @@ h1{
   border:0.01vw solid rgba(0,0,0,0.1);
   font-size:2.3vh;
   color:#fff;
+  cursor:pointer;
 }
 
 .listForm{
@@ -243,4 +285,52 @@ h1{
   width:40vw;
   height:7vh;
   display:flex;
+}
+
+.monthListText{
+  height:4vh;
+  width:20vw;
+  border:0.1vw solid gray;
+  color:gray;
+  font-size:3vh;
+  padding-left:1vw;
+  margin-bottom:2vh;
+}
+.monthListTime{
+  color:gray;
+}
+
+.aa{
+  width:62vw;
+  height:30vh;
+  background-color:rgb(106,190,150);
+  margin-top:4vh;
+  margin-left:1.5vw;
+  display:inline-block;
+}
+.inlineBox{
+  width:62vw;
+  height:30vh;
+}
+
+.aaTxt{
+  width:62vw;
+  height:10vh;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  color:white;
+}
+
+.aaa{
+  width:62vw;
+  height:20vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.aaaTxt{
+  color:white;
+  padding-bottom:5vh;
 }

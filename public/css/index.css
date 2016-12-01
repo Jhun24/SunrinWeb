@@ -41,30 +41,6 @@ body,html{
 
 }
 
-.header1{
-  width:100vw;
-  height:10vh;
-}
-
-.header2{
-  width:100vw;
-  height:10vh;
-
-}
-
-.header3{
-  width:100vw;
-  height:10vh;
-
-
-}
-
-.header4{
-  width:100vw;
-  height:10vh;
-
-}
-
 .headerBox{
   height:10vh;
   width:40vw;
@@ -110,17 +86,8 @@ body,html{
 .section{
   width:100vw;
   height:90vh;
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
-}
-
-#section2{
-  width:100vw;
-  height:90vh;
-  background: linear-gradient(to bottom left,#53e3a6 0%, #50a3a2 100%);
-}
-
-.mainBox{
-
+  background-image:url('img/background.jpg');
+  background-size:auto;
 }
 
 .mainHeader{
@@ -215,4 +182,10 @@ h1{
 .mainTryst{
   color:#0E4B54;
   font-size:10vh;
+}
+
+.opacityMask{
+  width:100vw;
+  height:100vh;
+  background-color:rgba(0,0,0,0.4);
 }

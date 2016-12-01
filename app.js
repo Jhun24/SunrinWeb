@@ -4,7 +4,6 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var fs = require('fs');
 var session = require('express-session')
 
 mongoose.connect('mongodb://localhost:27017/test'); // 기본 설정에 따라 포트가 상이 할 수 있습니다.
@@ -26,7 +25,8 @@ var memo = mongoose.Schema({
 	day : String,
 	year : String,
 	time : String,
-	content : String
+	content : String,
+	setMonth: String
 });
 
 var userModel = mongoose.model("usertModel", user);
@@ -94,60 +94,34 @@ app.use(function (req, res, next) {
     next();
 });
 
-// app.get('/template',function(req, res){
-//   //req.query.id
-//   res.send(req.query.id)
-// });
+app.post('/memoList',function(req, res){
+	memoModel.find({"id":req.session.userId,"year":req.session.userYear,"month":req.session.userMonth,"day":req.session.userDay},function(err,models){
+		if(models != ''){
+			res.send(models)
+		}
+		else{
+			res.send("1")
+		}
+	})
+})
 
-app.post('/addDate',function(req, res){
-		var time = req.body.date;
-		var cont = req.body.content;
-		var id = req.session.userId;
-		var day = req.session.userDay;
-		var month = req.session.userMonth;
-		var year = req.session.userYear;
+app.post('/addMemo',function(req, res){
+	console.log("Input addMemo")
+	var inputMemo = new memoModel({"id":req.session.userId,"year":req.session.userYear,"day":req.session.userDay,"month":req.session.userMonth,"setMonth":req.body.setMonth,"time":req.body.time,"content":req.body.content})
+	console.log(inputMemo)
+	inputMemo.save(function(err,models){
+		console.log("ModelSuccess")
+	})
+	res.send("0");
+})
 
-		var addMemo = new memoModel({"id":id,"time":time,"month":month,"year":year,"content":cont,"day":day});
-		addMemo.save(function(err,addMemo){
-			if(err){
-	      return console.error(err);
-	    }
-			res.render("cal.html")
-		});
+app.post('/sessionInputDay',function(req, res){
+	console.log("sessionInputDay Come")
+	req.session.userDay = req.body.day
+	req.session.userMonth = req.body.month
+	req.session.userYear = req.body.year
 
-});
-
-app.post('/memoList',function(req,res){
-		var id = req.session.userId;
-		var day = req.session.userDay;
-		var month = req.session.userMonth;
-		var year = req.session.userYear;
-
-		memoModel.find({"id":id,"day":day,"month":month,"year":year},function(err,models){
-			if(err){
-				return console.error(err);
-			}
-			if(models != ''){
-				console.log(models)
-				res.send(models);
-			}
-			else{
-				res.send("0")
-			}
-
-		})
-});
-
-app.post('/sessionDay',function(req, res){
-	var day = req.body.day;
-	var month = req.body.month;
-	var year = req.body.year;
-
-	req.session.userDay =day;
-	req.session.userMonth = month;
-	req.session.userYear = year;
-
-	res.send("5");
+	res.send("Session input finish")
 });
 
 app.post('/checkId',function(req, res,callback){
@@ -161,45 +135,56 @@ app.post('/checkId',function(req, res,callback){
 
 });
 
-app.post('/register',function(req, res){
-// var test = new userModel({name:"Jhun24",id:"jhun",pass:"1234"});
-  var id = req.body.id;
-  var ps = req.body.ps;
-  var nm = req.body.name;
-
-
-
-  var userData = new userModel({name:nm,id:id,pass:ps});
-  userData.save(function(err,userData){
-    if(err){
-      return console.error(err);
-		}
-  });
-	res.render("index.html")
-
-});
-
 app.post('/login',function(req, res){
-  var id = req.body.id;
+	var id = req.body.id;
   var ps = req.body.ps;
 
-	userModel.find({"id":id,"pass":ps},function(err , models){
+	userModel.find({"id":id,"pass":ps},function(err,models){
 		if(err){
 			return console.error(err)
 		}
+
 		if(models != ''){
-				console.log(models)
-				req.session.userId = id
-				res.render("cal.html")
+			req.session.userId = id;
+			res.render("cal.html")
 		}
 		else{
-			res.send("<script>alert(\"login Error\")</script>")
 			res.render("index.html")
 		}
-
-	})
-
+	});
 });
+
+
+app.post('/register',function(req, res){
+  var id = req.body.id;
+  var ps = req.body.ps;
+  var name = req.body.name;
+
+  var regi = new userModel({"name":name,"id":id,"pass":ps});
+	userModel.find({"id":id},function(err,model){
+		if(err){
+			return console.error(err)
+		}
+		if(model == ''){
+			regi.save(function(err,models){
+				console.log(models)
+				if(err){
+					return console.error(err);
+				}
+				if(models != ''){
+
+					res.render("index.html");
+				}
+				console.log(models)
+			});
+		}
+		else{
+			res.render("index.html");
+		}
+	});
+	
+});
+
 
 
 app.get('/',function(req, res){

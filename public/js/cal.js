@@ -5,9 +5,8 @@ var checkDay;
 
 var monthData = new Array();
 monthData = ['','January','Febuary','March','April','May','June','July','August','September','October','November','December'];
-
-$(function(){
-  window.onload = function checkid(){
+$(document).ready(function checkSessionId(){
+  console.log("a")
     $.ajax({
       method:"POST",
       url:"http://localhost:3000/checkId",
@@ -20,12 +19,16 @@ $(function(){
 
       }
     });
-  }
+
+});
+
+$(function(){
 
   window.onload = function drawCal(){
     $(".calDate").html(monthData[month]+" "+year)
 
-    var day = new Date(year+"."+month+".1").getDay()-1;
+    var day = new Date(year+"."+month+".1").getDay();
+    console.log(day);
     //7이 일요일
     var cal;
     var check;
@@ -38,6 +41,11 @@ $(function(){
     else{
         check = 30;
     }
+
+    if(month == 2){
+      check=28;
+    }
+
     var e = 1;
     var frDay = 7-day;
 
@@ -77,33 +85,37 @@ $(function(){
       checkDay = dayData;
       $.ajax({
         method:"POST",
-        url:"http://localhost:3000/sessionDay",
+        url:"http://localhost:3000/sessionInputDay",
         data:{"month":month,"year":year,"day":checkDay},
         success:function(data){
           console.log(data)
-
+          $(".monthList").html(" ");
+          $(".listContent").html(" ")
           $.ajax({
             method:"POST",
             url:"http://localhost:3000/memoList",
-            success:function(da){
-              if(data != '0'){
-                console.log(da);
-                if(da != '0'){
-                  var lm = ""
-                  for(var i=0; i<da.length; i++){
-                    var dt = da[i];
-                    lm += "<div class=\"listData\">"
-                    lm += "<div class=\"listTime\">"+da[i]['time']+"</div>"
-                    lm += "<div class=\"listName\">"+da[i]['content']+"</div>"
-                    lm += "</div>"
-                  }
-                  $('.listContent').html(lm);
+            success:function(model){
+              for(var i = 0; i<model.length; i++){
+                if(model[i]["setMonth"] == "This Month"){
+                  var s = "<div class=\"aa\">"
+                      s +=  "<div class=\"inlineBox\">"
+                      s += "<h1 class=\"aaTxt\">Time : "+model[i]["time"]+"</h1>"
+                      s += "<div class=\"aaa\">"
+                      s += "<h1 class=\"aaaTxt\">Content : "+model[i]["content"]+"</h1>"
+                      s += "</div>"
+                      s += "</div>"
+                      s += "</div>"
+
+                      $(".listContent").append(s)
+                }
+                else if(model[i]["setMonth"] == "Every Month"){
+                  var s = "<div class=\"monthListBox\">"
+                      s += "<h1 class=\"monthListTime\">"+model[i]["time"]+"</h1>"
+                      s += "<h1 class=\"monthListText\">"+model[i]["content"]+"</h1>"
+                      s += "</div>"
+                      $(".monthList").append(s);
                 }
               }
-
-            },
-            error:function(){
-              console.log("memoList Not Found")
             }
           });
         },
@@ -111,12 +123,12 @@ $(function(){
           console.log("Connect Error")
         }
       });
-
-
     });
   }
 
   $(".calSideBarNext").click(function addDate(){
+    $(".monthList").html(" ");
+    $(".listContent").html(" ")
     month = month+1;
     if(month == 13){
       month = 1;
@@ -124,7 +136,7 @@ $(function(){
     }
     $(".calDate").html(monthData[month]+" "+year)
 
-    var day = new Date(year+"."+month+".1").getDay()-1;
+    var day = new Date(year+"."+month+".1").getDay();
     //7이 일요일
     var cal;
     var check;
@@ -170,9 +182,106 @@ $(function(){
     }
     cal += "</div>"
     $(".dataNum").html(cal);
+    $(".num").click(function(){
+      var dayData = $(this).text();
+      $("#"+checkDay).removeClass("calSelect");
+      $("#"+dayData).addClass("calSelect");
+      checkDay = dayData;
+      $.ajax({
+        method:"POST",
+        url:"http://localhost:3000/sessionInputDay",
+        data:{"month":month,"year":year,"day":checkDay},
+        success:function(data){
+          console.log(data)
+          $(".monthList").html(" ");
+          $(".listContent").html(" ")
+          $.ajax({
+            method:"POST",
+            url:"http://localhost:3000/memoList",
+            success:function(model){
+              for(var i = 0; i<model.length; i++){
+                if(model[i]["setMonth"] == "This Month"){
+                  var s = "<div class=\"aa\">"
+                      s +=  "<div class=\"inlineBox\">"
+                      s += "<h1 class=\"aaTxt\">Time : "+model[i]["time"]+"</h1>"
+                      s += "<div class=\"aaa\">"
+                      s += "<h1 class=\"aaaTxt\">Content :"+model[i]["content"]+"</h1>"
+                      s += "</div>"
+                      s += "</div>"
+                      s += "</div>"
+
+                      $(".listContent").append(s)
+                }
+                else if(model[i]["setMonth"] == "Every Month"){
+                  var s = "<div class=\"monthListBox\">"
+                      s += "<h1 class=\"monthListTime\">"+model[i]["time"]+"</h1>"
+                      s += "<h1 class=\"monthListText\">"+model[i]["content"]+"</h1>"
+                      s += "</div>"
+                      $(".monthList").append(s);
+                }
+              }
+            }
+          });
+        },
+        error:function(){
+          console.log("Connect Error")
+        }
+      });
+     });    
+    //$(".num").click(function(){
+    //       var dayData = $(this).text();
+    //       $("#"+checkDay).removeClass("calSelect");
+    //       $("#"+dayData).addClass("calSelect");
+    //       checkDay = dayData;
+    //       $.ajax({
+    //         method:"POST",
+    //         url:"http://localhost:3000/sessionInputDay",
+    //         data:{"month":month,"year":year,"day":checkDay},
+    //         success:function(data){
+    //           console.log(data)
+    //           $(".monthList").html(" ");
+    //           $(".listContent").html(" ")
+    //           $.ajax({
+    //             method:"POST",
+    //             url:"http://localhost:3000/memoList",
+    //             success:function(model){
+    //               for(var i = 0; i<model.length; i++){
+    //                 if(model[i]["setMonth"] == "This Month"){
+    //                   var s = "<div class=\"aa\">"
+    //                       s +=  "<div class=\"inlineBox\">"
+    //                       s += "<h1 class=\"aaTxt\">Time : "+model[i]["time"]+"</h1>"
+    //                       s += "<div class=\"aaa\">"
+    //                       s += "<h1 class=\"aaaTxt\">Content :"+model[i]["content"]+"</h1>"
+    //                       s += "</div>"
+    //                       s += "</div>"
+    //                       s += "</div>"
+    //
+    //                       $(".listContent").append(s)
+    //                 }
+    //                 else if(model == "1"){
+    //
+    //                 }
+    //                 else if(model[i]["setMonth"] == "Every Month"){
+    //                   var s = "<div class=\"monthListBox\">"
+    //                       s += "<h1 class=\"monthListTime\">"+model[i]["time"]+"</h1>"
+    //                       s += "<h1 class=\"monthListText\">"+model[i]["content"]+"</h1>"
+    //                       s += "</div>"
+    //                       $(".monthList").append(s);
+    //                 }
+    //               }
+    //             }
+    //           });
+    //         },
+    //         error:function(){
+    //           console.log("Connect Error")
+    //         }
+    //       });
+    //     });
   });
 
   $(".calSideBarBack").click(function addDate(){
+    $(".monthList").html(" ");
+    $(".listContent").html(" ")
     month = month-1;
     if(month == 0){
       month = 12;
@@ -180,7 +289,7 @@ $(function(){
     }
     $(".calDate").html(monthData[month]+" "+year)
 
-    var day = new Date(year+"."+month+".1").getDay()-1;
+    var day = new Date(year+"."+month+".1").getDay();
     //7이 일요일
     var cal;
     var check;
@@ -225,8 +334,77 @@ $(function(){
     }
     cal += "</div>"
     $(".dataNum").html(cal);
+    $(".num").click(function(){
+      var dayData = $(this).text();
+      $("#"+checkDay).removeClass("calSelect");
+      $("#"+dayData).addClass("calSelect");
+      checkDay = dayData;
+      $.ajax({
+        method:"POST",
+        url:"http://localhost:3000/sessionInputDay",
+        data:{"month":month,"year":year,"day":checkDay},
+        success:function(data){
+          console.log(data)
+          $(".monthList").html(" ");
+          $(".listContent").html(" ")
+          $.ajax({
+            method:"POST",
+            url:"http://localhost:3000/memoList",
+            success:function(model){
+              for(var i = 0; i<model.length; i++){
+                if(model[i]["setMonth"] == "This Month"){
+                  var s = "<div class=\"aa\">"
+                      s +=  "<div class=\"inlineBox\">"
+                      s += "<h1 class=\"aaTxt\">Time : "+model[i]["time"]+"</h1>"
+                      s += "<div class=\"aaa\">"
+                      s += "<h1 class=\"aaaTxt\">Content : "+model[i]["content"]+"</h1>"
+                      s += "</div>"
+                      s += "</div>"
+                      s += "</div>"
+
+                      $(".listContent").append(s)
+                }
+                else if(model == "1"){
+
+                }
+                else if(model[i]["setMonth"] == "Every Month"){
+                  var s = "<div class=\"monthListBox\">"
+                      s += "<h1 class=\"monthListTime\">"+model[i]["time"]+"</h1>"
+                      s += "<h1 class=\"monthListText\">"+model[i]["content"]+"</h1>"
+                      s += "</div>"
+
+                      $(".monthList").append(s);
+                }
+              }
+            }
+          });
+        },
+        error:function(){
+          console.log("Connect Error")
+        }
+      });
+    });
   });
 
+$(".listSubmit").click(function(){
+  var month = $(".md").val();
+  var time = $(".addTime").val();
+  var content = $(".addContent").val();
+
+
+  $.ajax({
+    method:"POST",
+    url:"http://localhost:3000/addMemo",
+    data:{"content":content,"time":time,"setMonth":month},
+    success:function(data){
+    },
+    error:function(){
+      alert("Server Error 500");
+    }
+  });
+
+  location.reload(true)
+});
 
 
 });
